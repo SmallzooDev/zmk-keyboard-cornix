@@ -26,6 +26,18 @@
     };
 
     behaviors {
+        ak_semi: ak_semi {
+            compatible = "zmk,behavior-adaptive-key";
+            #binding-cells = <0>;
+            bindings = <&kp SEMI>;
+
+            escape_colon {
+                trigger-keys = <ESC>;
+                max-prior-idle-ms = <300>;
+                bindings = <&kp COLON>;
+            };
+        };
+
         arrows: arrows {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -47,7 +59,7 @@
             display-name = "Base";
             bindings = <
 &kp TAB    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
-&kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &kp SEMI   &kp ENTER
+&kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &ak_semi   &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C     &kp V   &kp B    &kp C_MUTE  &mkp MB3    &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT
 &kp LCTRL  &kp LALT  &kp LALT  &kp LGUI  &mo 3   &kp ESC                          &kp SPACE  &mo 1   &mo 2      &kp LEFT  &kp LGUI   &kp RIGHT
             >;
