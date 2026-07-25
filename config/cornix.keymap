@@ -65,6 +65,17 @@
         };
     };
 
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        // NavNum sits on the left thumb, Symbols on the right thumb, so Adjust
+        // needs one thumb from each hand and the press order does not matter.
+        adjust {
+            if-layers = <1 2>;
+            then-layer = <4>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -74,7 +85,7 @@
 &kp TAB    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
 &kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &ak_semi   &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C     &kp V   &kp B    &kp C_MUTE  &mkp MB3    &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT
-&kp LCTRL  &kp LALT  &kp LALT  &kp LGUI  &mo 2   &kp ESC                          &kp SPACE  &mo 1   &mo 3      &kp LEFT  &kp LGUI   &kp RIGHT
+&kp LCTRL  &kp LALT  &kp LALT  &mo 3     &mo 1   &kp ESC                          &kp SPACE  &kp LGUI  &mo 2    &kp LEFT  &kp LGUI   &kp RIGHT
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_encoder>;
         };
@@ -82,10 +93,10 @@
         nav_num_layer {
             display-name = "NavNum";
             bindings = <
-&kp ESC  &kp N1     &kp N2  &kp N3    &kp N4    &kp N5                             &kp N6    &kp N7    &kp N8  &kp N9     &kp N0     &kp BSPC
-&trans   &kp EQUAL  &trans  &trans    &kp SEMI  &kp MINUS                          &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp COLON  &kp ENTER
-&trans   &trans     &trans  &trans    &trans    &trans     &kp C_MUTE  &mkp MB3    &trans    &trans    &trans  &trans     &trans     &trans
-&trans   &trans     &trans  &kp LGUI  &mo 4     &trans                             &trans    &trans    &trans  &trans     &trans     &trans
+&kp F1  &kp F2  &kp F3   &kp F4   &kp F5   &kp F6                        &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans  &trans
+&kp F7  &kp F8  &kp F9   &kp F10  &kp F11  &kp F12                       &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
+&trans  &trans  &trans   &trans   &trans   &trans   &trans     &trans    &trans    &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans   &trans   &trans   &trans                        &trans    &trans     &trans     &trans     &trans  &trans
             >;
         };
 
@@ -115,7 +126,7 @@
 &none         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                    &none        &none   &none  &none  &none  &none
 &out OUT_TOG  &none         &none         &none         &none         &none                           &none        &none   &none  &none  &none  &none
 &none         &none         &none         &none         &none         &bootloader   &none    &none    &bootloader  &none   &none  &none  &none  &none
-&none         &none         &none         &none         &trans        &none                           &none        &trans  &none  &none  &none  &none
+&none         &none         &none         &trans        &trans        &none                           &none        &none   &trans &none  &none  &none
             >;
         };
     };
