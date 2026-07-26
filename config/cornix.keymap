@@ -147,8 +147,8 @@
             display-name = "Symbols";
             bindings = <
 &trans  &tsym GRAVE  &tsym LT     &tsym GT    &tsym MINUS  &tsym PIPE                            &tsym CARET  &tsym LBRC  &tsym RBRC   &tsym DLLR  &arrows    &trans
-&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym EQUAL  &tsym AMPS                            &tsym HASH   &tsym LPAR  &tsym RPAR   &tsym COLON &tsym DQT  &trans
-&trans  &tsym TILDE  &tsym PLUS   &tsym LBKT  &tsym RBKT   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym SEMI  &tsym COMMA  &tsym DOT   &tsym SQT  &tsym BSLH
+&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym KP_EQUAL  &tsym AMPS                         &tsym HASH   &tsym LPAR  &tsym RPAR   &tsym COLON &tsym DQT  &trans
+&trans  &tsym TILDE  &tsym PLUS   &tsym LBKT  &tsym RBKT   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym BSLH  &tsym COMMA  &tsym DOT   &tsym SQT  &trans
 &trans  &trans     &trans     &trans    &trans     &trans                             &trans     &trans     &trans     &trans    &trans   &trans
             >;
         };
