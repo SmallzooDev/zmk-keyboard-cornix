@@ -163,10 +163,10 @@
         num_row_layer {
             display-name = "NumRow";
             bindings = <
-&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                           &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                           &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp C_MUTE  &mkp MB3     &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                           &trans  &kp N0  &trans  &trans  &trans  &trans
+&trans  &kp N1       &kp N2       &kp N3      &kp N4          &kp N5                                &kp N6      &kp N7      &kp N8      &kp N9     &kp N0       &trans
+&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym KP_EQUAL  &tsym AMPS                            &tsym HASH  &tsym LBRC  &tsym RBRC  &tsym DQT  &tsym COLON  &trans
+&trans  &tsym TILDE  &tsym PLUS   &tsym BSLH  &tsym UNDER     &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT    &tsym LPAR  &trans      &trans     &tsym RPAR   &trans
+&trans  &trans       &trans       &trans      &trans          &trans                                &trans      &kp N0      &trans      &trans     &trans       &trans
             >;
         };
 
