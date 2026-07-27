@@ -88,6 +88,13 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
+        outs: outs {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&none>, <&out OUT_TOG>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -146,9 +153,9 @@
         symbol_layer {
             display-name = "Symbols";
             bindings = <
-&trans  &tsym GRAVE  &tsym LT     &tsym GT    &tsym MINUS  &tsym PIPE                            &tsym CARET  &tsym LBRC  &tsym RBRC   &tsym DLLR  &arrows    &trans
-&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym KP_EQUAL  &tsym AMPS                         &tsym HASH   &tsym LPAR  &tsym RPAR   &tsym DQT   &tsym COLON  &trans
-&trans  &tsym TILDE  &tsym PLUS   &tsym LBKT  &tsym RBKT   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym BSLH  &tsym UNDER  &tsym SQT  &tsym QMARK  &trans
+&trans  &tsym GRAVE  &tsym LT     &tsym GT     &tsym MINUS  &tsym PIPE                            &tsym CARET  &tsym LBKT  &tsym RBKT   &tsym DLLR  &arrows    &trans
+&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH   &tsym KP_EQUAL  &tsym AMPS                         &tsym HASH   &tsym LBRC  &tsym RBRC   &tsym DQT   &tsym COLON  &trans
+&trans  &tsym TILDE  &tsym PLUS   &tsym UNDER  &tsym BSLH   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym LPAR  &tsym RPAR   &tsym SQT  &tsym QMARK  &trans
 &trans  &trans     &trans     &trans    &trans     &trans                             &trans     &trans     &trans     &trans    &trans   &trans
             >;
         };
@@ -167,8 +174,8 @@
             display-name = "Adjust";
             bindings = <
 &none         &bts_0        &bts_1        &bts_2        &bts_3        &bts_4                          &none        &none   &none  &none  &none  &none
-&out OUT_TOG  &none         &none         &none         &none         &none                           &none        &none   &none  &none  &none  &none
-&trans        &none         &none         &none         &none         &bootloader   &none    &none    &bootloader  &none   &none  &none  &none  &trans
+&outs         &none         &none         &none         &none         &none                           &none        &none   &none  &none  &none  &none
+&trans        &none         &none         &none         &none         &none         &none    &none    &none        &none   &none  &none  &none  &trans
 &none         &none         &none         &trans        &none         &none                           &none        &trans  &trans &none  &none  &none
             >;
         };
