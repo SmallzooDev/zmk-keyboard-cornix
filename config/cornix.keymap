@@ -148,7 +148,7 @@
             bindings = <
 &trans  &tsym GRAVE  &tsym LT     &tsym GT    &tsym MINUS  &tsym PIPE                            &tsym CARET  &tsym LBRC  &tsym RBRC   &tsym DLLR  &arrows    &trans
 &trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym KP_EQUAL  &tsym AMPS                         &tsym HASH   &tsym LPAR  &tsym RPAR   &tsym DQT   &tsym COLON  &trans
-&trans  &tsym TILDE  &tsym PLUS   &tsym LBKT  &tsym RBKT   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym BSLH  &tsym UNDER  &tsym QMARK  &tsym SQT  &trans
+&trans  &tsym TILDE  &tsym PLUS   &tsym LBKT  &tsym RBKT   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym BSLH  &tsym UNDER  &tsym SQT  &tsym QMARK  &trans
 &trans  &trans     &trans     &trans    &trans     &trans                             &trans     &trans     &trans     &trans    &trans   &trans
             >;
         };
