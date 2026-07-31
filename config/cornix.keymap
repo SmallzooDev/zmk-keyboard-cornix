@@ -12,18 +12,6 @@
 
 / {
     macros {
-        m_arrow: m_arrow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS &kp GT>;
-        };
-
-        m_fat_arrow: m_fat_arrow {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp EQUAL &kp GT>;
-        };
-
         tsym: tsym {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -46,53 +34,90 @@
             };
         };
 
-        arrows: arrows {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&m_arrow>, <&m_fat_arrow>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
+        // BT controls require BOTH shifts held (nested mod-morphs): the
+        // outer morph checks left shift, the inner one checks right shift.
         bts_0: bts_0 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&bts_0_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bts_0_r: bts_0_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&bt BT_SEL 0>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         bts_1: bts_1 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&bts_1_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bts_1_r: bts_1_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&bt BT_SEL 1>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         bts_2: bts_2 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&bts_2_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bts_2_r: bts_2_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&bt BT_SEL 2>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         bts_3: bts_3 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&bts_3_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bts_3_r: bts_3_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&bt BT_SEL 3>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         bts_4: bts_4 {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&bts_4_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        bts_4_r: bts_4_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&bt BT_SEL 4>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         outs: outs {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            bindings = <&none>, <&outs_r>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        outs_r: outs_r {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             bindings = <&none>, <&out OUT_TOG>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RSFT)>;
         };
 
         scroll_encoder: scroll_encoder {
@@ -109,9 +134,9 @@
         // BT_CLR is destructive (wipes the active profile's bonding), so it is
         // deliberately awkward: Adjust layer + both outer corners at once.
         combo_bt_clr {
-            timeout-ms = <100>;
+            timeout-ms = <200>;
             key-positions = <0 11>;
-            layers = <4>;
+            layers = <3>;
             bindings = <&bt BT_CLR>;
         };
     };
@@ -119,11 +144,11 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
-        // NumRow(left outer thumb) + Symbols(right outer thumb): the symmetric
-        // outer-thumb pair, and the press order does not matter.
+        // NumSym(left middle thumb) + NavNum(right middle thumb): the
+        // symmetric middle-thumb pair, and the press order does not matter.
         adjust {
-            if-layers = <2 3>;
-            then-layer = <4>;
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 
@@ -136,7 +161,7 @@
 &kp TAB    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
 &kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &ak_semi   &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C     &kp V   &kp B    &kp C_MUTE  &mkp MB3    &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT
-&kp LG(LALT)  &kp LG(LCTRL)  &kp LALT  &mo 3   &kp LGUI  &kp ESC                  &kp SPACE  &mo 1  &mo 2      &none     &kp LG(LCTRL)  &kp LG(LSHFT)
+&kp LG(LALT)  &kp LG(LCTRL)  &kp LALT  &kp LGUI  &mo 2   &kp ESC                  &kp SPACE  &mo 1  &kp LALT   &none     &kp LG(LCTRL)  &kp LG(LSHFT)
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_encoder>;
         };
@@ -144,40 +169,30 @@
         nav_num_layer {
             display-name = "NavNum";
             bindings = <
-&trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp F5                        &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans  &trans
-&trans  &kp F6  &kp F7   &kp F8   &kp F9   &kp F10                       &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
-&trans  &kp F11  &kp F12  &trans  &trans   &trans   &trans     &trans    &trans    &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans   &trans   &trans   &trans                        &trans    &trans     &trans     &trans     &trans  &trans
+&trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp F5                        &kp HOME  &kp PG_DN        &kp PG_UP    &kp END    &trans  &trans
+&trans  &kp F6  &kp F7   &kp F8   &kp F9   &kp F10                       &kp LEFT  &kp DOWN         &kp UP       &kp RIGHT  &trans  &trans
+&trans  &kp F11  &kp F12  &trans  &trans   &trans   &trans     &trans    &trans    &kp LC(LS(TAB))  &kp LC(TAB)  &trans     &trans  &trans
+&trans  &trans  &trans   &trans   &trans   &trans                        &trans    &trans           &trans       &trans     &trans  &trans
             >;
         };
 
-        symbol_layer {
-            display-name = "Symbols";
+        num_sym_layer {
+            display-name = "NumSym";
             bindings = <
-&trans  &tsym GRAVE  &tsym LT     &tsym GT     &tsym MINUS  &tsym PIPE                            &tsym CARET  &tsym LBKT  &tsym RBKT   &tsym DLLR  &arrows    &trans
-&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH   &tsym KP_EQUAL  &tsym AMPS                         &tsym HASH   &tsym LBRC  &tsym RBRC   &tsym DQT   &tsym COLON  &trans
-&trans  &tsym TILDE  &tsym PLUS   &tsym BSLH   &tsym UNDER  &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT     &tsym LPAR  &tsym RPAR   &tsym SQT  &tsym QMARK  &trans
-&trans  &trans     &trans     &trans    &trans     &trans                             &trans     &trans     &trans     &trans    &trans   &trans
-            >;
-        };
-
-        num_row_layer {
-            display-name = "NumRow";
-            bindings = <
-&trans  &kp N1       &kp N2       &kp N3      &kp N4          &kp N5                                &kp N6      &kp N7      &kp N8      &kp N9     &kp N0       &trans
-&trans  &tsym EXCL   &tsym ASTRK  &tsym FSLH  &tsym KP_EQUAL  &tsym AMPS                            &tsym HASH  &tsym LBRC  &tsym RBRC  &tsym DQT  &tsym COLON  &trans
-&trans  &tsym TILDE  &tsym PLUS   &tsym BSLH  &tsym UNDER     &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AT    &tsym LPAR  &trans      &trans     &tsym RPAR   &trans
-&trans  &trans       &trans       &trans      &trans          &trans                                &trans      &kp N0      &trans      &trans     &trans       &trans
+&trans  &tsym N1     &tsym N2     &tsym N3    &tsym N4     &tsym N5                              &tsym N6    &tsym N7     &tsym N8    &tsym N9   &tsym N0     &trans
+&trans  &tsym EQUAL  &tsym MINUS  &tsym BSLH  &tsym GRAVE  &tsym CARET                           &tsym DLLR  &tsym LBKT   &tsym RBKT  &tsym SQT  &tsym COLON  &trans
+&trans  &tsym PLUS   &tsym EXCL   &tsym LPAR  &tsym RPAR   &tsym PRCNT  &kp C_MUTE  &mkp MB3     &tsym AMPS  &tsym ASTRK  &tsym LT    &tsym GT   &tsym QMARK  &trans
+&trans  &trans       &trans       &trans      &trans       &trans                                &trans      &trans       &trans      &trans     &trans       &trans
             >;
         };
 
         adjust_layer {
             display-name = "Adjust";
             bindings = <
-&none         &bts_0        &bts_1        &bts_2        &bts_3        &bts_4                          &none        &none   &none  &none  &none  &none
-&outs         &none         &none         &none         &none         &none                           &none        &none   &none  &none  &none  &none
-&trans        &none         &none         &none         &none         &none         &none    &none    &none        &none   &none  &none  &none  &trans
-&none         &none         &none         &trans        &none         &none                           &none        &trans  &trans &none  &none  &none
+&none   &bts_0  &bts_1  &bts_2  &bts_3  &bts_4                    &none  &none   &none  &outs  &none  &none
+&none   &none   &none   &none   &none   &none                     &none  &none   &none  &none  &none  &none
+&trans  &none   &none   &none   &none   &none   &none    &none    &none  &none   &none  &none  &none  &trans
+&none   &none   &none   &none   &trans  &none                     &none  &trans  &none  &none  &none  &none
             >;
         };
     };
