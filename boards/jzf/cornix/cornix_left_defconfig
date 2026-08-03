@@ -34,6 +34,8 @@ CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
 
 # 增加键盘的 BLE 无线电的发射功率，用解决延迟和左右通讯不佳的问题
 CONFIG_BT_CTLR_TX_PWR_PLUS_8=y
+# 2M PHY off: stay on 1M for ~4dB more rx margin (intermittent lag A/B, 2026-08-03)
+CONFIG_BT_CTLR_PHY_2M=n
 # 更改键盘默认显示名称
 
 # 电池电量报告间隔时间单位是秒

@@ -27,6 +27,8 @@ CONFIG_ZMK_SPLIT=y
 
 CONFIG_ZMK_BLE=y
 CONFIG_BT_CTLR_TX_PWR_PLUS_8=y
+# 2M PHY off: stay on 1M for ~4dB more rx margin (intermittent lag A/B, 2026-08-03)
+CONFIG_BT_CTLR_PHY_2M=n
 
 # never output usb
 CONFIG_ZMK_USB=n
