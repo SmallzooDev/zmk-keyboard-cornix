@@ -144,8 +144,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
 
-        // NumSym(left thumb outer+middle pair) + NavNum(right thumb
-        // middle+outer pair): one key from each hand, any order.
+        // Layer keys are mirrored on both hands (outer=NumSym, middle=NavNum);
+        // holding any NumSym key with any NavNum key activates Adjust.
         adjust {
             if-layers = <1 2>;
             then-layer = <3>;
@@ -161,7 +161,7 @@
 &kp TAB    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
 &kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &ak_semi   &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C     &kp V   &kp B    &kp C_MUTE  &mkp MB3    &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT
-&kp LG(LALT)  &kp LG(LCTRL)  &kp LGUI  &mo 2     &mo 2   &kp ESC                  &kp SPACE  &mo 1  &mo 1      &kp LALT  &kp LG(LCTRL)  &kp LG(LSHFT)
+&kp LG(LALT)  &kp LG(LCTRL)  &kp LGUI  &mo 2     &mo 1   &kp ESC                  &kp SPACE  &mo 1  &mo 2      &kp LALT  &kp LG(LCTRL)  &kp LG(LSHFT)
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_encoder>;
         };
