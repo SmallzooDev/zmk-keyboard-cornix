@@ -158,12 +158,12 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp TAB    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
+&kp ESC    &kp Q     &kp W     &kp E     &kp R   &kp T                            &kp Y      &kp U   &kp I      &kp O     &kp P      &kp BSPC
 &kp LCTRL  &kp A     &kp S     &kp D     &kp F   &kp G                            &kp H      &kp J   &kp K      &kp L     &ak_semi   &kp ENTER
 &kp LSHFT  &kp Z     &kp X     &kp C     &kp V   &kp B    &kp C_MUTE  &mkp MB3    &kp N      &kp M   &kp COMMA  &kp DOT   &kp FSLH   &kp RSHFT
-&kp LG(LALT)  &kp LG(LCTRL)  &kp LGUI  &mo 2     &mo 1   &kp ESC                  &kp SPACE  &mo 1  &mo 2      &kp LALT  &kp LG(LCTRL)  &kp LG(LSHFT)
+&kp LG(LALT)  &kp LG(LCTRL)  &kp LALT  &mo 2     &mo 1   &kp LGUI                 &kp SPACE  &mo 1  &mo 2      &kp LC(SPACE)  &kp LG(LCTRL)  &kp LG(LSHFT)
             >;
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &scroll_encoder>;
+            sensor-bindings = <&inc_dec_kp LA(DOWN) LA(UP) &inc_dec_kp LC(TAB) LC(LS(TAB))>;
         };
 
         nav_num_layer {
@@ -172,7 +172,7 @@
 &trans  &kp F1  &kp F2   &kp F3   &kp F4   &kp F5                        &kp HOME  &kp PG_DN        &kp PG_UP    &kp END    &trans  &trans
 &trans  &kp F6  &kp F7   &kp F8   &kp F9   &kp F10                       &kp LEFT  &kp DOWN         &kp UP       &kp RIGHT  &trans  &trans
 &trans  &kp F11  &kp F12  &trans  &trans   &trans   &trans     &trans    &trans    &kp LC(LS(TAB))  &kp LC(TAB)  &trans     &trans  &trans
-&trans  &trans  &trans   &trans   &trans   &trans                        &trans    &trans           &trans       &trans     &trans  &trans
+&trans  &trans  &trans   &trans   &trans   &trans                        &kp TAB   &trans           &trans       &trans     &trans  &trans
             >;
         };
 
